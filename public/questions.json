@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "type": "one-choice",
+    "title": "Question 1",
+    "description": "Choose the correct answer",
+    "image": "/images/capital.jpg",
+    "question": "What is the capital of France?",
+    "options": ["Berlin", "Madrid", "Paris", "Rome"],
+    "answer": "Paris",
+    "next": 2
+  },
+  {
+    "id": 2,
+    "type": "multiple-choice",
+    "title": "Question 2",
+    "description": "Select all that apply",
+    "image": "/images/capital.jpg",
+    "question": "Which of the following are fruits?",
+    "options": ["Apple", "Carrot", "Banana", "Potato"],
+    "answer": ["Apple", "Banana"],
+    "next": 3
+  },
+  {
+    "id": 3,
+    "type": "input",
+    "title": "Question 3",
+    "description": "Provide your answer",
+    "image": "/images/capital.jpg",
+    "question": "What is 2 + 2?",
+    "answer": "4",
+    "next": null
+  }
+]
