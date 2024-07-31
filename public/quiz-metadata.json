@@ -1,0 +1,20 @@
+[
+  {
+    "quizId": 1,
+    "title": "General Knowledge Quiz",
+    "description": "Test your general knowledge with a variety of questions.",
+    "questions": [1, 2, 3]
+  },
+  {
+    "quizId": 2,
+    "title": "Fruit Knowledge Quiz",
+    "description": "How much do you know about fruits?",
+    "questions": [2]
+  },
+  {
+    "quizId": 3,
+    "title": "Math Quiz",
+    "description": "Challenge yourself with these math questions.",
+    "questions": [3]
+  }
+]

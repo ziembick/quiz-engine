@@ -1,55 +1,70 @@
-"use client";
+'use client';
 import { useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Question from "../Questions";
 import styles from "./quiz.module.css";
 import Start from "../Start";
 import Score from "../Score";
-import { motion } from 'framer-motion'
 
-export default function Quiz() {
+export default function Quiz({ questionIds }) {
   const [questions, setQuestions] = useState([]);
-  const [currentQuestionId, setCurrentQuestionId] = useState(1);
+  const [currentQuestionId, setCurrentQuestionId] = useState(questionIds[0]);
   const [progress, setProgress] = useState(0);
   const [showRestart, setShowRestart] = useState(false);
   const [score, setScore] = useState(0);
-  const [notification, setNotification] = useState({ show: false, message: '', type: ''})
+  const [notification, setNotification] = useState({
+    show: false,
+    message: "",
+    type: "",
+  });
 
   useEffect(() => {
     fetch("/questions.json")
       .then((response) => response.json())
-      .then((data) => setQuestions(data));
-  }, []);
+      .then((data) => {
+        // Filter questions based on questionIds prop
+        const filteredQuestions = data.filter((question) =>
+          questionIds.includes(question.id)
+        );
+        setQuestions(filteredQuestions);
+      });
+  }, [questionIds]);
 
-  const handleAnswer = (answer) => {
+  const handleAnswer = (selectedOptions) => {
     const currentQuestion = questions.find((q) => q.id === currentQuestionId);
     if (currentQuestion) {
-      // Check if the answer is correct
-      const isCorrect = Array.isArray(currentQuestion.answer)
-        ? currentQuestion.answer.includes(answer)
-        : currentQuestion.answer === answer;
-
-      // Update the score
-      if (isCorrect) {
-        setScore((prevScore) => prevScore + 10);
-        setNotification({show: true, message: 'Correct!', type: 'success'})
+      let isCorrect = false;
+      if (Array.isArray(currentQuestion.answer)) {
+        isCorrect =
+          selectedOptions.length === currentQuestion.answer.length &&
+          selectedOptions.every((option) =>
+            currentQuestion.answer.includes(option)
+          );
       } else {
-        setScore((prevScore) => prevScore - 5);
-        setNotification({show: true, message: "Incorrect", type: 'error'})
+        isCorrect = currentQuestion.answer === selectedOptions;
       }
 
+      const updateScore = () => {
+        if (isCorrect) {
+          setScore((prevScore) => prevScore + 10);
+          setNotification({ show: true, message: "Correct!", type: "success" });
+        } else {
+          setScore((prevScore) => (prevScore > 0 ? prevScore - 5 : 0));
+          setNotification({ show: true, message: "Incorrect", type: "error" });
+        }
+      };
+
+      updateScore();
+
       setTimeout(() => {
-        setNotification({show: true, message: '', type: ''})
-      }, 2000)
+        setNotification({ show: false, message: "", type: "" });
+      }, 2000);
 
       // Move to the next question
-      setCurrentQuestionId(currentQuestion.next);
+      const nextQuestionId = currentQuestion.next || null;
+      setCurrentQuestionId(nextQuestionId);
       setProgress((prev) => prev + 1);
     }
-
-    // Process the answer and update the state as needed
-    setCurrentQuestionId(currentQuestion.next);
-    setProgress((prev) => prev + 1);
   };
 
   const handleRestartQuiz = () => {
@@ -79,7 +94,9 @@ export default function Quiz() {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
-          className={notification.type === 'success' ? styles.success : styles.error}
+          className={
+            notification.type === "success" ? styles.success : styles.error
+          }
         >
           {notification.message}
         </motion.div>
@@ -95,9 +112,7 @@ export default function Quiz() {
           onAnswer={handleAnswer}
         />
       </AnimatePresence>
-      <button onClick={handleRestartQuiz}>
-        Restart Quiz
-      </button>
+      <button onClick={handleRestartQuiz}>Restart Quiz</button>
     </div>
   );
 }

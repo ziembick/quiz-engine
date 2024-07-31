@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Quiz from "../Quiz";
+import Quizzes from "../Quizzes";
 
 export default function Start() {
   const [start, setStart] = useState(false);
@@ -18,7 +19,8 @@ export default function Start() {
           <button onClick={handleStartQuiz}>Start quiz</button>
         </div>
       ) : (
-        <Quiz />
+        <Quizzes />
+        // <Quiz />
       )}
     </div>
   );

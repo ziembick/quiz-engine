@@ -4,10 +4,22 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function Question({ question, onAnswer }) {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(
+    question.type === "multiple-choice" ? [] : null
+  );
 
   const handleOptionChange = (e) => {
-    setSelectedOption(e.target.value);
+    const value = e.target.value;
+
+    if (question.type === "multiple-choice") {
+      setSelectedOption((prevSelected) =>
+        prevSelected.includes(value)
+          ? prevSelected.filter((option) => option !== value)
+          : [...prevSelected, value]
+      );
+    } else {
+      setSelectedOption(value);
+    }
   };
 
   const handleSubmit = () => {
@@ -46,7 +58,7 @@ export default function Question({ question, onAnswer }) {
               <input
                 type="checkbox"
                 value={option}
-                checked={selectedOption?.includes(option)}
+                checked={selectedOption.includes(option)}
                 onChange={handleOptionChange}
               />
               {option}
@@ -58,7 +70,7 @@ export default function Question({ question, onAnswer }) {
         <input
           type="text"
           value={selectedOption}
-          onChange={handleOptionChange}
+          onChange={(e) => setSelectedOption(e.target.value)}
         />
       )}
       <button onClick={handleSubmit}>Next</button>
