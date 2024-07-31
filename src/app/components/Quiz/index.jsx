@@ -6,7 +6,7 @@ import styles from "./quiz.module.css";
 import Start from "../Start";
 import Score from "../Score";
 
-export default function Quiz({ questionIds }) {
+export default function Quiz({ questionIds, onRestart }) {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionId, setCurrentQuestionId] = useState(questionIds[0]);
   const [progress, setProgress] = useState(0);
@@ -68,6 +68,7 @@ export default function Quiz({ questionIds }) {
   };
 
   const handleRestartQuiz = () => {
+    onRestart();
     setShowRestart(true);
   };
 
