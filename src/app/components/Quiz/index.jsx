@@ -1,13 +1,15 @@
-"use client";
+'use client'
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import Question from "../Questions";
-import styles from './quiz.module.css'
+import styles from './quiz.module.css';
+import Start from "../Start";
 
 export default function Quiz() {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionId, setCurrentQuestionId] = useState(1);
   const [progress, setProgress] = useState(0);
+  const [showRestart, setShowRestart] = useState(false);
 
   useEffect(() => {
     fetch("/questions.json")
@@ -22,9 +24,26 @@ export default function Quiz() {
     setProgress((prev) => prev + 1);
   };
 
+  const handleRestartQuiz = () => {
+    setShowRestart(true);
+  };
+
   const currentQuestion = questions.find((q) => q.id === currentQuestionId);
 
-  if (!currentQuestion) return <p>Quiz Completed!</p>;
+  if (showRestart) {
+    return <Start />;
+  }
+
+  if (!currentQuestion) {
+    return (
+      <div>
+        <p>Quiz Completed!</p>
+        <button onClick={handleRestartQuiz}>
+          Restart Quiz
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -38,6 +57,9 @@ export default function Quiz() {
           onAnswer={handleAnswer}
         />
       </AnimatePresence>
+      <button onClick={handleRestartQuiz}>
+        Restart Quiz
+      </button>
     </div>
   );
 }
