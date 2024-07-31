@@ -32,6 +32,15 @@ export default function Quiz({ questionIds, onRestart }) {
 
   const handleAnswer = (selectedOptions) => {
     const currentQuestion = questions.find((q) => q.id === currentQuestionId);
+
+    if (!selectedOptions || (Array.isArray(selectedOptions) && selectedOptions.length === 0)) {
+      setNotification({ show: true, message: "Please select an answer!", type: "error" });
+      setTimeout(() => {
+        setNotification({ show: false, message: "", type: "" });
+      }, 2000);
+      return;
+    }
+
     if (currentQuestion) {
       let isCorrect = false;
       if (Array.isArray(currentQuestion.answer)) {
@@ -58,12 +67,11 @@ export default function Quiz({ questionIds, onRestart }) {
 
       setTimeout(() => {
         setNotification({ show: false, message: "", type: "" });
+        // Move to the next question after the notification has been displayed
+        const nextQuestionId = currentQuestion.next || null;
+        setCurrentQuestionId(nextQuestionId);
+        setProgress((prev) => prev + 1);
       }, 2000);
-
-      // Move to the next question
-      const nextQuestionId = currentQuestion.next || null;
-      setCurrentQuestionId(nextQuestionId);
-      setProgress((prev) => prev + 1);
     }
   };
 
