@@ -5,6 +5,7 @@ import Question from "../Questions";
 import styles from "./quiz.module.css";
 import Start from "../Start";
 import Score from "../Score";
+import { motion } from 'framer-motion'
 
 export default function Quiz() {
   const [questions, setQuestions] = useState([]);
@@ -12,6 +13,7 @@ export default function Quiz() {
   const [progress, setProgress] = useState(0);
   const [showRestart, setShowRestart] = useState(false);
   const [score, setScore] = useState(0);
+  const [notification, setNotification] = useState({ show: false, message: '', type: ''})
 
   useEffect(() => {
     fetch("/questions.json")
@@ -30,9 +32,15 @@ export default function Quiz() {
       // Update the score
       if (isCorrect) {
         setScore((prevScore) => prevScore + 10);
+        setNotification({show: true, message: 'Correct!', type: 'success'})
       } else {
         setScore((prevScore) => prevScore - 5);
+        setNotification({show: true, message: "Incorrect", type: 'error'})
       }
+
+      setTimeout(() => {
+        setNotification({show: true, message: '', type: ''})
+      }, 2000)
 
       // Move to the next question
       setCurrentQuestionId(currentQuestion.next);
@@ -66,6 +74,16 @@ export default function Quiz() {
 
   return (
     <div>
+      {notification.show && (
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 50 }}
+          className={notification.type === 'success' ? styles.success : styles.error}
+        >
+          {notification.message}
+        </motion.div>
+      )}
       <Score score={score} />
       <div className={styles.progress_bar}>
         <div style={{ width: `${(progress / questions.length) * 100}%` }} />
@@ -77,7 +95,9 @@ export default function Quiz() {
           onAnswer={handleAnswer}
         />
       </AnimatePresence>
-      <button onClick={handleRestartQuiz}>Restart Quiz</button>
+      <button onClick={handleRestartQuiz}>
+        Restart Quiz
+      </button>
     </div>
   );
 }
