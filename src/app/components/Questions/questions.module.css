@@ -1,0 +1,78 @@
+.parentContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+  }
+
+.mainQuiz {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+  }
+  
+  .mainQuiz h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333333;
+  }
+  
+  .mainQuiz p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #666666;
+  }
+  
+  .mainQuiz img {
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+  
+  .mainQuiz div {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .mainQuiz label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .mainQuiz input[type="radio"],
+  .mainQuiz input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .mainQuiz input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  .mainQuiz button {
+    background-color: #0070f3;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .mainQuiz button:hover {
+    background-color: #005bb5;
+  }
+  

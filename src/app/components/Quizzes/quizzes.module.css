@@ -1,0 +1,56 @@
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.available {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.eachAvailable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border: 2px solid #ccc;
+  margin: 1rem 0;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.btnAvailable {
+  background: none repeat scroll 0 0 transparent;
+  font-family: var(--font-poppins);
+  border: medium none;
+  border-spacing: 0;
+  color: #FFF;
+  cursor: pointer;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.42rem;
+  background-color: #000;
+  border-radius: 20px;
+  list-style: none outside none;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  text-decoration: none;
+  text-indent: 0;
+}
+
+.btnAvailable:hover {
+  background-color: #333;
+}

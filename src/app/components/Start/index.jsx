@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Quiz from "../Quiz";
 import Quizzes from "../Quizzes";
+import styles from './start.module.css'
 
 export default function Start() {
   const [start, setStart] = useState(false);
@@ -12,15 +13,14 @@ export default function Start() {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       {!start ? (
-        <div>
-          <h1>Welcome to quiz</h1>
-          <button onClick={handleStartQuiz}>Start quiz</button>
+        <div className={styles.welcome}>
+          <h1>Welcome to quiz!</h1>
+          <button onClick={handleStartQuiz} className={styles.btn}>Start quiz</button>
         </div>
       ) : (
         <Quizzes />
-        // <Quiz />
       )}
     </div>
   );

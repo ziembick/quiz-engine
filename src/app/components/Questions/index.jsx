@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import styles from './questions.module.css'
 
 export default function Question({ question, onAnswer }) {
   const [selectedOption, setSelectedOption] = useState(
@@ -27,10 +28,12 @@ export default function Question({ question, onAnswer }) {
   };
 
   return (
+    <div className={styles.parentContainer}>
     <motion.div
       initial={{ opacity: 0, x: -100 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 100 }}
+      className={styles.mainQuiz}
     >
       <h2>{question.title}</h2>
       <p>{question.description}</p>
@@ -75,5 +78,6 @@ export default function Question({ question, onAnswer }) {
       )}
       <button onClick={handleSubmit}>Next</button>
     </motion.div>
+    </div>
   );
 }
