@@ -1,0 +1,9 @@
+.quizTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: var(--font-poppins);
+    font-weight: 500;
+    color: #48981c
+}

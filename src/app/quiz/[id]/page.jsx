@@ -2,6 +2,7 @@
 import Quiz from '@/app/components/Quiz';
 import { useParams, useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import styles from './quizPage.module.css'
 
 
 export default function QuizPage() {
@@ -21,8 +22,8 @@ export default function QuizPage() {
   }, [id]);
 
   const handleRestartQuiz = () => {
-    setQuiz(null); // Reset the quiz state
-    router.push('/'); // Navigate back to the main page
+    setQuiz(null); 
+    router.push('/'); 
   };
 
 
@@ -30,7 +31,7 @@ export default function QuizPage() {
 
   return (
     <div>
-      <h1>{quiz.title}</h1>
+      <h1 className={styles.quizTitle}>{quiz.title}</h1>
       <Quiz questionIds={quiz.questions} onRestart={handleRestartQuiz}/>
     </div>
   );

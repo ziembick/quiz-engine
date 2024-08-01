@@ -38,3 +38,56 @@
   background: #76c7c0;
   transition: width 0.3s ease-in-out;
 }
+
+.score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem;
+}
+
+.restartBtn {
+  background: none repeat scroll 0 0 transparent;
+  font-family: var(--font-poppins);
+  border: medium none;
+  border-spacing: 0;
+  color: #FFF;
+  cursor: pointer;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.42rem;
+  background-color: #000;
+  border-radius: 20px;
+  list-style: none outside none;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  text-decoration: none;
+  text-indent: 0;
+}
+
+.restartBtn:hover {
+  background-color: #333;
+}
+
+
+.completedQuiz{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.completedTitle {
+  font-size: 2rem;
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  color: green;
+}

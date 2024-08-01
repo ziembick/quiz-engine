@@ -22,7 +22,6 @@ export default function Quiz({ questionIds, onRestart }) {
     fetch("/questions.json")
       .then((response) => response.json())
       .then((data) => {
-        // Filter questions based on questionIds prop
         const filteredQuestions = data.filter((question) =>
           questionIds.includes(question.id)
         );
@@ -67,7 +66,6 @@ export default function Quiz({ questionIds, onRestart }) {
 
       setTimeout(() => {
         setNotification({ show: false, message: "", type: "" });
-        // Move to the next question after the notification has been displayed
         const nextQuestionId = currentQuestion.next || null;
         setCurrentQuestionId(nextQuestionId);
         setProgress((prev) => prev + 1);
@@ -88,16 +86,16 @@ export default function Quiz({ questionIds, onRestart }) {
 
   if (!currentQuestion) {
     return (
-      <div>
-        <p>Quiz Completed!</p>
+      <div className={styles.completedQuiz}>
+        <p className={styles.completedTitle}>Quiz Completed!</p>
         <Score score={score} />
-        <button onClick={handleRestartQuiz}>Restart Quiz</button>
+        <button onClick={handleRestartQuiz} className={styles.restartBtn}>Restart Quiz</button>
       </div>
     );
   }
 
   return (
-    <div>
+    <div className={styles.titlesComponent}>
       {notification.show && (
         <motion.div
           initial={{ opacity: 0, y: -50 }}
@@ -110,7 +108,9 @@ export default function Quiz({ questionIds, onRestart }) {
           {notification.message}
         </motion.div>
       )}
+      <div className={styles.score}>
       <Score score={score} />
+      </div>
       <div className={styles.progress_bar}>
         <div style={{ width: `${(progress / questions.length) * 100}%` }} />
       </div>
@@ -121,7 +121,9 @@ export default function Quiz({ questionIds, onRestart }) {
           onAnswer={handleAnswer}
         />
       </AnimatePresence>
-      <button onClick={handleRestartQuiz}>Restart Quiz</button>
+      <div className={styles.btnContainer}>
+      <button onClick={handleRestartQuiz} className={styles.restartBtn}>Restart Quiz</button>
+      </div>
     </div>
   );
 }
