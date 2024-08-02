@@ -1,0 +1,10 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-poppins);
+  font-weight: 200;
+  font-size: 0.5rem;
+  margin: 0;
+  padding: 0;
+}

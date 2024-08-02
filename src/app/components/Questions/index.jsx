@@ -37,7 +37,7 @@ export default function Question({ question, onAnswer }) {
     >
       <h2>{question.title}</h2>
       <p>{question.description}</p>
-      <Image src={question.image} alt={question.title} width={50} height={50} />
+      <Image src={question.image} alt={question.title} width={500} height={250} />
       <p>{question.question}</p>
       {question.type === "one-choice" && (
         <div>

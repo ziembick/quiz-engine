@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Question from "../Questions";
@@ -32,8 +32,15 @@ export default function Quiz({ questionIds, onRestart }) {
   const handleAnswer = (selectedOptions) => {
     const currentQuestion = questions.find((q) => q.id === currentQuestionId);
 
-    if (!selectedOptions || (Array.isArray(selectedOptions) && selectedOptions.length === 0)) {
-      setNotification({ show: true, message: "Please select an answer!", type: "error" });
+    if (
+      !selectedOptions ||
+      (Array.isArray(selectedOptions) && selectedOptions.length === 0)
+    ) {
+      setNotification({
+        show: true,
+        message: "Please select an answer!",
+        type: "error",
+      });
       setTimeout(() => {
         setNotification({ show: false, message: "", type: "" });
       }, 2000);
@@ -89,18 +96,22 @@ export default function Quiz({ questionIds, onRestart }) {
       <div className={styles.completedQuiz}>
         <p className={styles.completedTitle}>Quiz Completed!</p>
         <Score score={score} />
-        <button onClick={handleRestartQuiz} className={styles.restartBtn}>Restart Quiz</button>
+        <button onClick={handleRestartQuiz} className={styles.restartBtn}>
+          Restart Quiz
+        </button>
       </div>
     );
   }
 
   return (
-    <div className={styles.titlesComponent}>
+    <motion.div
+      className={styles.titlesComponent}
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 50 }}
+    >
       {notification.show && (
         <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 50 }}
           className={
             notification.type === "success" ? styles.success : styles.error
           }
@@ -109,7 +120,7 @@ export default function Quiz({ questionIds, onRestart }) {
         </motion.div>
       )}
       <div className={styles.score}>
-      <Score score={score} />
+        <Score score={score} />
       </div>
       <div className={styles.progress_bar}>
         <div style={{ width: `${(progress / questions.length) * 100}%` }} />
@@ -122,8 +133,10 @@ export default function Quiz({ questionIds, onRestart }) {
         />
       </AnimatePresence>
       <div className={styles.btnContainer}>
-      <button onClick={handleRestartQuiz} className={styles.restartBtn}>Restart Quiz</button>
+        <button onClick={handleRestartQuiz} className={styles.restartBtn}>
+          Restart Quiz
+        </button>
       </div>
-    </div>
+    </motion.div>
   );
 }
