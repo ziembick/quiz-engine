@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import Quiz from "../Quiz";
+import React, { useState } from "react";
 import Quizzes from "../Quizzes";
-import styles from './start.module.css'
+import styles from './start.module.css';
 
 export default function Start() {
   const [start, setStart] = useState(false);
@@ -16,8 +15,12 @@ export default function Start() {
     <div className={styles.container}>
       {!start ? (
         <div className={styles.welcome}>
-          <h1>Welcome to quiz!</h1>
-          <button onClick={handleStartQuiz} className={styles.btn}>Start quiz</button>
+          <h1 className={styles.quizTitle}>Welcome to the Quiz!</h1>
+          <div className={styles.btnContainer}>
+            <button onClick={handleStartQuiz} className={styles.btn}>
+              Start Quiz
+            </button>
+          </div>
         </div>
       ) : (
         <Quizzes />

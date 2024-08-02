@@ -78,16 +78,46 @@
 }
 
 
-.completedQuiz{
+.parentContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.completedQuiz {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.completedQuiz:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .completedTitle {
   font-size: 2rem;
-  font-family: var(--font-poppins);
-  font-weight: 400;
-  color: green;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #4CAF50;
+  margin-bottom: 20px;
+}
+
+.score {
+  font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  margin-bottom: 20px;
 }

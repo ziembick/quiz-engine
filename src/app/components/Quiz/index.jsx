@@ -93,12 +93,27 @@ export default function Quiz({ questionIds, onRestart }) {
 
   if (!currentQuestion) {
     return (
-      <div className={styles.completedQuiz}>
-        <p className={styles.completedTitle}>Quiz Completed!</p>
-        <Score score={score} />
-        <button onClick={handleRestartQuiz} className={styles.restartBtn}>
-          Restart Quiz
-        </button>
+      <div className={styles.parentContainer}>
+        <motion.div
+          className={styles.completedQuiz}
+          initial={{ opacity: 0, y: 100, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          exit={{ opacity: 0, y: 100, filter: "blur(10px)" }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 30,
+            delay: 0.2,
+          }}
+        >
+          <p className={styles.completedTitle}>Quiz Completed!</p>
+          <div className={styles.score}>
+            <Score score={score} />
+          </div>
+          <button onClick={handleRestartQuiz} className={styles.restartBtn}>
+            Restart Quiz
+          </button>
+        </motion.div>
       </div>
     );
   }

@@ -30,9 +30,15 @@ export default function Question({ question, onAnswer }) {
   return (
     <div className={styles.parentContainer}>
     <motion.div
-      initial={{ opacity: 0, x: -100 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: 100 }}
+      initial={{ opacity: 0, y: -100, filter: "blur(10px)" }}
+      animate={{ opacity: 1, y: -100, filter: "blur(0px)" }}
+      exit={{ opacity: 0, y: -100, filter: "blur(10px)" }}
+      transition={{
+        type: "spring",
+        stiffness: 100,
+        damping: 30,
+        delay: 0.2,
+      }}
       className={styles.mainQuiz}
     >
       <h2>{question.title}</h2>
