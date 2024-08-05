@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import Question from "../Questions";
 import styles from "./quiz.module.css";
 import Start from "../Start";
@@ -94,18 +93,7 @@ export default function Quiz({ questionIds, onRestart }) {
   if (!currentQuestion) {
     return (
       <div className={styles.parentContainer}>
-        <motion.div
-          className={styles.completedQuiz}
-          initial={{ opacity: 0, y: 100, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          exit={{ opacity: 0, y: 100, filter: "blur(10px)" }}
-          transition={{
-            type: "spring",
-            stiffness: 100,
-            damping: 30,
-            delay: 0.2,
-          }}
-        >
+        <div className={styles.completedQuiz}>
           <p className={styles.completedTitle}>Quiz Completed!</p>
           <div className={styles.score}>
             <Score score={score} />
@@ -113,26 +101,21 @@ export default function Quiz({ questionIds, onRestart }) {
           <button onClick={handleRestartQuiz} className={styles.restartBtn}>
             Restart Quiz
           </button>
-        </motion.div>
+        </div>
       </div>
     );
   }
 
   return (
-    <motion.div
-      className={styles.titlesComponent}
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 50 }}
-    >
+    <div className={styles.titlesComponent}>
       {notification.show && (
-        <motion.div
+        <div
           className={
             notification.type === "success" ? styles.success : styles.error
           }
         >
           {notification.message}
-        </motion.div>
+        </div>
       )}
       <div className={styles.score}>
         <Score score={score} />
@@ -140,18 +123,18 @@ export default function Quiz({ questionIds, onRestart }) {
       <div className={styles.progress_bar}>
         <div style={{ width: `${(progress / questions.length) * 100}%` }} />
       </div>
-      <AnimatePresence>
-        <Question
-          key={currentQuestion.id}
-          question={currentQuestion}
-          onAnswer={handleAnswer}
-        />
-      </AnimatePresence>
+
+      <Question
+        key={currentQuestion.id}
+        question={currentQuestion}
+        onAnswer={handleAnswer}
+      />
+
       <div className={styles.btnContainer}>
         <button onClick={handleRestartQuiz} className={styles.restartBtn}>
           Restart Quiz
         </button>
       </div>
-    </motion.div>
+    </div>
   );
 }

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "./quizzes.module.css";
-import { motion } from "framer-motion";
 
 export default function Quizzes() {
   const [quizzes, setQuizzes] = useState([]);

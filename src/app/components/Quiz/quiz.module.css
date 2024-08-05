@@ -1,3 +1,4 @@
+/* Estilos existentes */
 .success {
   background-color: #d4edda;
   color: #155724;
@@ -9,6 +10,9 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: fadeInDown 0.8s ease-in-out forwards 0.2s;
 }
 
 .error {
@@ -22,6 +26,9 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: fadeInDown 0.8s ease-in-out forwards 0.2s;
 }
 
 .progress_bar {
@@ -77,7 +84,6 @@
   background-color: #333;
 }
 
-
 .parentContainer {
   display: flex;
   justify-content: center;
@@ -99,12 +105,10 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   text-align: center;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.completedQuiz:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(100px);
+  filter: blur(10px);
+  animation: fadeInUp 0.8s ease-in-out forwards 0.2s;
 }
 
 .completedTitle {
@@ -120,4 +124,21 @@
   font-family: 'Poppins', sans-serif;
   color: #333;
   margin-bottom: 20px;
+}
+
+/* Animações */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }

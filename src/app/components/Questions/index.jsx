@@ -1,8 +1,7 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
-import styles from './questions.module.css'
+import styles from "./questions.module.css";
 
 export default function Question({ question, onAnswer }) {
   const [selectedOption, setSelectedOption] = useState(
@@ -29,61 +28,55 @@ export default function Question({ question, onAnswer }) {
 
   return (
     <div className={styles.parentContainer}>
-    <motion.div
-      initial={{ opacity: 0, y: -100, filter: "blur(10px)" }}
-      animate={{ opacity: 1, y: -100, filter: "blur(0px)" }}
-      exit={{ opacity: 0, y: -100, filter: "blur(10px)" }}
-      transition={{
-        type: "spring",
-        stiffness: 100,
-        damping: 30,
-        delay: 0.2,
-      }}
-      className={styles.mainQuiz}
-    >
-      <h2>{question.title}</h2>
-      <p>{question.description}</p>
-      <Image src={question.image} alt={question.title} width={500} height={250} />
-      <p>{question.question}</p>
-      {question.type === "one-choice" && (
-        <div>
-          {question.options.map((option, index) => (
-            <label key={index}>
-              <input
-                type="radio"
-                value={option}
-                checked={selectedOption === option}
-                onChange={handleOptionChange}
-              />
-              {option}
-            </label>
-          ))}
-        </div>
-      )}
-      {question.type === "multiple-choice" && (
-        <div>
-          {question.options.map((option, index) => (
-            <label key={index}>
-              <input
-                type="checkbox"
-                value={option}
-                checked={selectedOption.includes(option)}
-                onChange={handleOptionChange}
-              />
-              {option}
-            </label>
-          ))}
-        </div>
-      )}
-      {question.type === "input" && (
-        <input
-          type="text"
-          value={selectedOption}
-          onChange={(e) => setSelectedOption(e.target.value)}
+      <div className={styles.mainQuiz}>
+        <h2>{question.title}</h2>
+        <p>{question.description}</p>
+        <Image
+          src={question.image}
+          alt={question.title}
+          width={500}
+          height={250}
         />
-      )}
-      <button onClick={handleSubmit}>Next</button>
-    </motion.div>
+        <p>{question.question}</p>
+        {question.type === "one-choice" && (
+          <div>
+            {question.options.map((option, index) => (
+              <label key={index}>
+                <input
+                  type="radio"
+                  value={option}
+                  checked={selectedOption === option}
+                  onChange={handleOptionChange}
+                />
+                {option}
+              </label>
+            ))}
+          </div>
+        )}
+        {question.type === "multiple-choice" && (
+          <div>
+            {question.options.map((option, index) => (
+              <label key={index}>
+                <input
+                  type="checkbox"
+                  value={option}
+                  checked={selectedOption.includes(option)}
+                  onChange={handleOptionChange}
+                />
+                {option}
+              </label>
+            ))}
+          </div>
+        )}
+        {question.type === "input" && (
+          <input
+            type="text"
+            value={selectedOption}
+            onChange={(e) => setSelectedOption(e.target.value)}
+          />
+        )}
+        <button onClick={handleSubmit}>Next</button>
+      </div>
     </div>
   );
 }

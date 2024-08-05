@@ -1,9 +1,10 @@
+/* Estilos existentes */
 .parentContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0; 
+  background-color: #f0f0f0;
   padding: 20px;
 }
 
@@ -19,6 +20,10 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   text-align: center;
+  opacity: 0;
+  transform: translateY(-100px);
+  filter: blur(10px);
+  animation: fadeInUp 0.8s ease-in-out forwards 0.2s;
 }
 
 .mainQuiz h2 {
@@ -86,4 +91,13 @@
 
 .mainQuiz button:hover {
   background-color: #005bb5;
+}
+
+/* Animação */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
