@@ -18,7 +18,7 @@ export default function Quizzes() {
         {quizzes.length > 0 ? (
           quizzes.map((quiz, i) => (
             <li key={quiz.quizId} className={styles.eachAvailable}>
-              <h2>{quiz.title}</h2>
+              <h2 className={styles.miniQuizTitle}>{quiz.title}</h2>
               <p>{quiz.description}</p>
               <Link
                 href={`/quiz/${quiz.quizId}`}
