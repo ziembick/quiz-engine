@@ -36,8 +36,14 @@
   color: #666666;
 }
 
-.mainQuiz img {
+.imageContainer {
+  width: 100%;
   margin-bottom: 20px;
+}
+
+.responsiveImage {
+  width:500;
+  height:250;
   border-radius: 10px;
 }
 
@@ -104,21 +110,31 @@
   }
 }
 
-
 @media (max-width: 768px) {
   .mainQuiz {
-    align-items: flex-start; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .score {
     align-self: flex-start; 
     margin-bottom: 10px; 
   }
+
+  .responsiveImage {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
 }
 
 @media (max-width: 480px) {
   .mainQuiz {
     padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .mainQuiz h2 {
@@ -137,5 +153,11 @@
   .score {
     align-self: flex-start; 
     margin-bottom: 10px; 
+  }
+
+  .responsiveImage {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
   }
 }

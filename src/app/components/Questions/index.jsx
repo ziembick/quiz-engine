@@ -36,8 +36,9 @@ export default function Question({ question, onAnswer }) {
         <Image
           src={question.image}
           alt={question.title}
-          width={500}
+          width={550}
           height={250}
+          className={styles.responsiveImage}
         />
         <p className={styles.questions}>{question.question}</p>
         {question.type === "one-choice" && (
