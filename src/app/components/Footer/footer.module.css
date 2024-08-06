@@ -8,3 +8,21 @@
   margin: 0;
   padding: 0;
 }
+
+@media (max-width: 768px) {
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.3rem;
+  }
+}
