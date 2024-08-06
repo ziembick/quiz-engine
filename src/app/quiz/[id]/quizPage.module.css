@@ -1,10 +1,10 @@
 .quizTitle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: var(--font-montserrat);
-    font-weight: 700;
-    color: #454545;
-    font-size: 2.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: var(--font-montserrat);
+  font-weight: 700;
+  color: #454545;
+  font-size: 2.8rem;
 }

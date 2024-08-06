@@ -28,6 +28,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${poppins.className}  ${styles.body} ${montSerrat.className}`}>
         {children}
+        <Footer />
         </body>
     </html>
   );

@@ -2,7 +2,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import styles from "./questions.module.css";
-import Score from "../Score";
 
 export default function Question({ question, onAnswer }) {
   const [score, setScore] = useState(0);
