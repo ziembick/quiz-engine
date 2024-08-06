@@ -1,9 +1,8 @@
-/* Estilos existentes */
+/* Existing Styles */
 .parentContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* height: 100vh; */
   background-color: #93B7BE;
   padding: 20px;
 }
@@ -94,10 +93,50 @@
   background-color: #87bd90;
 }
 
+.questions {
+  padding-bottom: 1rem;
+}
+
 @keyframes fadeInUp {
   to {
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
+  }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .mainQuiz {
+    align-items: flex-start; /* Align items to the start for small screens */
+  }
+
+  .score {
+    align-self: flex-start; /* Align score to the start */
+    margin-bottom: 10px; /* Add margin for spacing */
+  }
+}
+
+@media (max-width: 480px) {
+  .mainQuiz {
+    padding: 15px;
+  }
+
+  .mainQuiz h2 {
+    font-size: 1.2rem;
+  }
+
+  .mainQuiz p {
+    font-size: 0.9rem;
+  }
+
+  .mainQuiz button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .score {
+    align-self: flex-start; /* Align score to the start */
+    margin-bottom: 10px; /* Add margin for spacing */
   }
 }

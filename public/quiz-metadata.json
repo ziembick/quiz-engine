@@ -1,20 +1,26 @@
 [
   {
     "quizId": 1,
-    "title": "General Knowledge Quiz",
-    "description": "Test your general knowledge with a variety of questions.",
+    "title": "Biological Questions",
+    "description": "Test your general knowledge about Biological Questions.",
     "questions": [1, 2, 3]
   },
   {
     "quizId": 2,
-    "title": "Fruit Knowledge Quiz",
-    "description": "How much do you know about fruits?",
-    "questions": [2]
+    "title": "Company-Related Questions",
+    "description": "Test your general knowledge about SiPhox Health",
+    "questions": [4, 5, 6]
   },
   {
     "quizId": 3,
-    "title": "Math Quiz",
-    "description": "Challenge yourself with these math questions.",
-    "questions": [3]
+    "title": "General Health Questions",
+    "description": "Challenge yourself with general health questions.",
+    "questions": [7, 8, 9]
+  },
+  {
+    "quizId": 4,
+    "title": "All questions!",
+    "description": "Test yourself answering all the questions!.",
+    "questions": [1, 2, 3, 4, 5, 6, 7, 8, 9]
   }
 ]

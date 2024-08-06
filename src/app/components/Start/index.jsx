@@ -15,7 +15,7 @@ export default function Start() {
     <div className={styles.container}>
       {!start ? (
         <div className={styles.welcome}>
-          <p className={styles.quizTitle}>Welcome to the Quiz!</p>
+          <p className={styles.quizTitle}>Welcome SiPhox Health Quiz!</p>
           <div className={styles.btnContainer}>
             <button onClick={handleStartQuiz} className={styles.btn}>
               Start Quiz

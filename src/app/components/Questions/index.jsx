@@ -2,8 +2,10 @@
 import { useState } from "react";
 import Image from "next/image";
 import styles from "./questions.module.css";
+import Score from "../Score";
 
 export default function Question({ question, onAnswer }) {
+  const [score, setScore] = useState(0);
   const [selectedOption, setSelectedOption] = useState(
     question.type === "multiple-choice" ? [] : null
   );
@@ -23,8 +25,9 @@ export default function Question({ question, onAnswer }) {
   };
 
   const handleSubmit = () => {
-    onAnswer(selectedOption);
+    onAnswer(selectedOption, setScore);
   };
+  
 
   return (
     <div className={styles.parentContainer}>
@@ -37,7 +40,7 @@ export default function Question({ question, onAnswer }) {
           width={500}
           height={250}
         />
-        <p>{question.question}</p>
+        <p className={styles.questions}>{question.question}</p>
         {question.type === "one-choice" && (
           <div>
             {question.options.map((option, index) => (

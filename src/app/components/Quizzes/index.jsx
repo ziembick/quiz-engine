@@ -13,7 +13,7 @@ export default function Quizzes() {
 
   return (
     <div className={styles.mainContainer}>
-      <h1 className={styles.h1}>Available Quizzes</h1>
+      <h1 className={styles.h1}>Available Quizzes!</h1>
       <ul className={styles.available}>
         {quizzes.length > 0 ? (
           quizzes.map((quiz, i) => (

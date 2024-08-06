@@ -108,6 +108,9 @@ export default function Quiz({ questionIds, onRestart }) {
 
   return (
     <div className={styles.titlesComponent}>
+      <div className={styles.scoreTitles}>
+        <Score score={score} />
+      </div>
       {notification.show && (
         <div
           className={
@@ -120,9 +123,7 @@ export default function Quiz({ questionIds, onRestart }) {
       <div className={styles.progress_bar}>
         <div style={{ width: `${(progress / questions.length) * 100}%` }} />
       </div>
-      <div className={styles.score}>
-        <Score score={score} />
-      </div>
+
       <Question
         key={currentQuestion.id}
         question={currentQuestion}
