@@ -40,6 +40,7 @@
   opacity: 0;
   transform: translateX(-400px);
   filter: blur(10px);
+  color: #454545;
 }
 
 @keyframes fadeInLeft {
@@ -74,6 +75,7 @@
   font-size: 3rem;
   font-weight: 700;
   font-family: var(--font-montserrat);
+  color: #454545;
 }
 
 @keyframes fadeInDown {

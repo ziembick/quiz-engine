@@ -1,8 +1,4 @@
-/* Estilos existentes */
-.success {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
+.success, .error {
   padding: 10px;
   border-radius: 5px;
   position: fixed;
@@ -11,24 +7,19 @@
   transform: translateX(-50%);
   z-index: 1000;
   opacity: 0;
-  transform: translateY(-50px);
   animation: fadeInDown 0.8s ease-in-out forwards 0.2s;
+}
+
+.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
 }
 
 .error {
   background-color: #f8d7da;
   color: #721c24;
   border: 1px solid #f5c6cb;
-  padding: 10px;
-  border-radius: 5px;
-  position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  opacity: 0;
-  transform: translateY(-50px);
-  animation: fadeInDown 0.8s ease-in-out forwards 0.2s;
 }
 
 .progress_bar {
@@ -46,38 +37,24 @@
   transition: width 0.3s ease-in-out;
 }
 
-.score {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .btnContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 3rem;
+  margin: 2rem 0;
 }
 
 .restartBtn {
   background: none repeat scroll 0 0 transparent;
-  font-family: var(--font-poppins);
   border: medium none;
-  border-spacing: 0;
   color: #FFF;
   cursor: pointer;
-  font-family: "PT Sans Narrow", sans-serif;
-  font-size: 1rem;
-  font-weight: normal;
-  line-height: 1.42rem;
-  background-color: #000;
+  font-size: 1.2rem;
+  background-color: #64896A;
   border-radius: 20px;
-  list-style: none outside none;
-  margin: 0;
-  padding: 0.5rem 1rem;
-  text-align: left;
+  padding: 1rem;
+  text-align: center;
   text-decoration: none;
-  text-indent: 0;
 }
 
 .restartBtn:hover {
@@ -88,8 +65,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0;
+  min-height: 50vh;
+  background-color: #93B7BE;
   padding: 20px;
 }
 
@@ -113,20 +90,22 @@
 
 .completedTitle {
   font-size: 2rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-montserrat);
   font-weight: 600;
-  color: #4CAF50;
+  color: #454545;
   margin-bottom: 20px;
 }
 
 .score {
-  font-size: 1.5rem;
-  font-family: 'Poppins', sans-serif;
-  color: #333;
+  font-size: 1.2rem;
+  font-family: var(--font-montserrat);
+  color: #454545;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
 }
 
-/* Animações */
 @keyframes fadeInUp {
   to {
     opacity: 1;
@@ -140,5 +119,24 @@
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .completedQuiz {
+    padding: 20px;
+  }
+
+  .completedTitle {
+    font-size: 1.5rem;
+  }
+
+  .score {
+    font-size: 1rem;
+  }
+
+  .restartBtn {
+    font-size: 0.9rem;
+    padding: 0.5rem;
   }
 }

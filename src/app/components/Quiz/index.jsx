@@ -117,19 +117,17 @@ export default function Quiz({ questionIds, onRestart }) {
           {notification.message}
         </div>
       )}
-      <div className={styles.score}>
-        <Score score={score} />
-      </div>
       <div className={styles.progress_bar}>
         <div style={{ width: `${(progress / questions.length) * 100}%` }} />
       </div>
-
+      <div className={styles.score}>
+        <Score score={score} />
+      </div>
       <Question
         key={currentQuestion.id}
         question={currentQuestion}
         onAnswer={handleAnswer}
       />
-
       <div className={styles.btnContainer}>
         <button onClick={handleRestartQuiz} className={styles.restartBtn}>
           Restart Quiz

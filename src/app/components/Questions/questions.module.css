@@ -3,8 +3,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0;
+  /* height: 100vh; */
+  background-color: #93B7BE;
   padding: 20px;
 }
 
@@ -79,9 +79,10 @@
 }
 
 .mainQuiz button {
-  background-color: #0070f3;
+  background-color: #64896A;
   color: #ffffff;
   border: none;
+  font-family: var(--font-poppins);
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 1rem;
@@ -90,10 +91,9 @@
 }
 
 .mainQuiz button:hover {
-  background-color: #005bb5;
+  background-color: #87bd90;
 }
 
-/* Animação */
 @keyframes fadeInUp {
   to {
     opacity: 1;
