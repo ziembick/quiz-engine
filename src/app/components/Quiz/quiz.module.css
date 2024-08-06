@@ -23,13 +23,13 @@
 }
 
 .progress_bar {
-  width: 100%; /* Ajuste a largura conforme necessário */
-  max-width: 1200px; /* Limite a largura máxima */
+  width: 100%; 
+  max-width: 1200px; 
   height: 10px;
   background: #e0e0e0;
   border-radius: 5px;
   overflow: hidden;
-  margin: 20px auto; /* Centraliza a barra de progresso */
+  margin: 20px auto; 
 }
 
 .progress_bar div {
@@ -100,14 +100,13 @@
 .score {
   font-size: 1.5rem;
   font-family: var(--font-montserrat);
-  color: #64896A;
+  color: #15505d;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
 }
 
-/* Animações */
 @keyframes fadeInUp {
   to {
     opacity: 1;
@@ -124,7 +123,6 @@
   }
 }
 
-/* Media Queries para Responsividade */
 @media (max-width: 768px) {
   .completedQuiz {
     padding: 20px;
